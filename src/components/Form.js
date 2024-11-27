@@ -6,6 +6,11 @@ export default function Form({ onAddTask }) {
   const handleSubmit = (e) => {
     // TODO: write code to handle form submission
       e.preventDefault();
+
+      if (description.trim() === "") {
+        alert("Please enter a task description.");
+        return; 
+      }
   
       const task = {
         id: Date.now(),
@@ -29,12 +34,13 @@ export default function Form({ onAddTask }) {
       <input
         id="description"
         type="text"
-        placeholder="Task Description..."
+        placeholder="New Task"
         onChange={handleDescription}
+        required
         value={description}
       />
 
-      <button type="submit" onClick={handleSubmit}>Add</button>
+      <button type="submit">Add Task</button>
     </form>
   );
 }
